@@ -13,6 +13,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -28,9 +32,7 @@
 
         <!-- LOGIN FORM -->
 
-        <form
-          id="login-form"
-          onsubmit="loginUser(event)">
+        <form id="login-form" onsubmit="loginUser(event)">
           <h2>Login</h2>
 
           <div class="form-group">
@@ -214,7 +216,6 @@
             </article>
           </section>
 
-
           <section class="analytics-layout">
             <article class="chart-container">
               <h3>Cash Flow Analysis</h3>
@@ -254,10 +255,16 @@
             </aside>
           </section>
 
-
           <section class="table-container">
             <div class="table-header">
               <h3>All Transactions</h3>
+
+              <input
+                type="text"
+                id="transaction-search"
+                placeholder="Search transactions..."
+                oninput="handleSearch(this.value)"
+              />
 
               <select
                 id="table-filter"
@@ -325,7 +332,7 @@
     <div id="transaction-modal" class="modal-overlay hidden">
       <div class="modal-box">
         <div class="modal-header">
-          <h3>Add Transaction</h3>
+          <h3 id="modal-title">Add Transaction</h3>
           <span class="close-modal-btn" onclick="closeModal()"> &times; </span>
         </div>
         <form id="modal-form" onsubmit="processForm(event)">
@@ -382,6 +389,8 @@
       </div>
     </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="script.js"></script>
   </body>
 </html>
