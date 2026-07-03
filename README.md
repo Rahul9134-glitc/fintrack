@@ -6,7 +6,7 @@ A modern Personal Finance Tracker built using **HTML, CSS, and JavaScript**. It 
 
 ## 🚀 Live Demo
 
-🔗 https://your-vercel-link.vercel.app
+🔗 https://fintrack3-chi.vercel.app/
 
 ---
 
@@ -118,7 +118,7 @@ FinTrack-Pro/
 Clone the repository
 
 ```bash
-git clone https://github.com/your-username/FinTrack-Pro.git
+git clone https://github.com/Rahul9134-glitc/fintrack/tree/main
 ```
 
 Open project folder
@@ -170,7 +170,7 @@ This project helped me understand:
 
 Aspiring Software Engineer | MERN Stack Developer | JavaScript Enthusiast
 
----
+---https://github.com/Rahul9134-glitc
 
 ## ⭐ Support
 

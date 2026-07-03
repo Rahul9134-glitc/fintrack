@@ -344,7 +344,7 @@ function loginUser(event) {
   document.getElementById("settings-name-input").value = savedUser.name;
 
   if (!savedUser) {
-    showToast("Please Register First" , "warning");
+    showToast("Please Register First!" , "warning");
     return;
   }
 
@@ -369,6 +369,8 @@ function logoutUser() {
   if (!confirm("Are you sure you want to logout?")) {
     return;
   }
+
+  showToast("Logout Sucessfully!" , "success")
 
   document.getElementById("auth-container").classList.remove("hidden");
 
