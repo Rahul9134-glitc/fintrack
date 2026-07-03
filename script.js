@@ -127,7 +127,7 @@ function processForm(event) {
         category,
       };
       editingId = null;
-      showToast("Edit Transaction Sucessfully!")
+      showToast("Edit Transaction Sucessfully!" , "success")
     }
     document.getElementById("modal-title").innerHTML = "Add Transaction";
   } else {
@@ -140,7 +140,7 @@ function processForm(event) {
       category,
     };
     records.push(newLog);
-    showToast("Add Transactions Sucessfully!")
+    showToast("Add Transactions Sucessfully!" , "success")
   }
   localStorage.setItem("fintrack_logs", JSON.stringify(records));
   closeModal();
@@ -153,6 +153,7 @@ function eraseRecord(targetId) {
   localStorage.setItem("fintrack_logs", JSON.stringify(records));
 
   masterRefresh();
+  showToast("Your data is restore!" , "success")
 }
 
 function generateAnalyticsChart() {
@@ -251,7 +252,7 @@ function saveSystemSettings() {
 
   masterRefresh();
 
-  showToast("Settings Saved Successfully");
+  showToast("Settings Saved Successfully" , "success");
 
   changePage("dashboard")
 }
@@ -324,7 +325,7 @@ function registerUser(event) {
 
   localStorage.setItem("fintrack_user", JSON.stringify(user));
 
-  showToast("Register Sucesfully!")
+  showToast("Register Sucesfully!" , "success")
 
   document.getElementById("register-form").reset();
 
@@ -343,13 +344,12 @@ function loginUser(event) {
   document.getElementById("settings-name-input").value = savedUser.name;
 
   if (!savedUser) {
-    showToast("Please Register First");
-
+    showToast("Please Register First" , "warning");
     return;
   }
 
   if (savedUser.email === email && savedUser.password === password) {
-    showToast("Login Successful");
+    showToast("Login Successful" , "success");
     document.getElementById("auth-container").classList.add("hidden");
 
     document.querySelector(".app-container").classList.remove("hidden");
@@ -361,7 +361,7 @@ function loginUser(event) {
 
     localStorage.setItem("fintrack_loggedIn", "true");
   } else {
-    alert("Invalid Email or Password");
+    showToast("Invalid Email or Password" , "error");
   }
 }
 
@@ -440,21 +440,34 @@ function editRecord(targetId) {
   openModal();
 }
 
-function showToast(message, color = "#16a34a") {
+function showToast(message, type) {
 
-    Toastify({
-        text: message,
-        duration: 3000,
-        gravity: "top",
-        position: "right",
-        close: true,
-        stopOnFocus: true,
-        style: {
-            background: color,
-            borderRadius: "8px"
-        }
-    }).showToast();
+  let bgColor = "#2563eb";
 
+  if (type === "success") {
+    bgColor = "#16a34a";
+  }
+
+  if (type === "error") {
+    bgColor = "#dc2626";
+  }
+
+  if (type === "warning") {
+    bgColor = "#f59e0b";
+  }
+
+  Toastify({
+    text: message,
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    close: true,
+    stopOnFocus: true,
+    style: {
+      background: bgColor,
+      color: "#fff"
+    }
+  }).showToast();
 }
 
 function handleSearch(value){
